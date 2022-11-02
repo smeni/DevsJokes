@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>
+    Joke Description:</h1>
+<div mat-dialog-content [style]="{'background': data.joke.color }">
+    <p>type: <label>{{data.joke.type}}</label></p>
+    <p>category: <label>{{data.joke.category}}</label></p>
+    <p>setup: <label>{{data.joke.setup}}</label> </p>
+    <p>delivery: <label>{{data.joke.delivery}}</label></p>
+</div>
+
+<h1 mat-dialog-title>More joke?</h1>
+<div mat-dialog-content style="background-color: rgb(240, 192, 255)" [style]="{'background': data.moreJoke.color }">
+    <p>{{data.moreJoke.joke ? data.moreJoke.joke : data.moreJoke.setup}}</p>
+    <br>
+    <p>{{data.moreJoke.delivery}}</p>
+</div>

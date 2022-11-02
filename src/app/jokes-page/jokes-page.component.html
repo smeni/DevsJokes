@@ -1,0 +1,30 @@
+<p>
+    <mat-toolbar color="primary">
+
+        <mat-label style="align-content: center;">Hello {{loginUser}}
+            <mat-icon>favorite</mat-icon>
+        </mat-label>
+
+        <br>
+
+        <button mat-icon-button aria-label="Example icon button with a open in new tab icon" (click)="logOut()" class="toolbar" style="padding-left: 100px">
+            <span>Log out</span>
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+
+
+        <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+            <mat-icon>favorite</mat-icon>
+          </button> -->
+
+    </mat-toolbar>
+</p>
+
+
+<mat-grid-list cols="4" rowHeight="4:1">
+    <mat-grid-tile *ngFor="let joke of jokesArray" [ngStyle]="{'background': joke.color }" (click)="getMore($event, joke)">
+        <p>{{joke.joke ? joke.joke : joke.setup}}</p>
+        <br>
+        <p>{{joke.delivery}}</p>
+    </mat-grid-tile>
+</mat-grid-list>

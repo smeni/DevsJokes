@@ -1,0 +1,43 @@
+<div>
+    <mat-card>
+        <mat-card-title>Login</mat-card-title>
+        <mat-card-content>
+            <form class="example-form" [formGroup]="loginForm">
+                <mat-form-field *ngIf="registerMode">
+                    <input matInput formControlName="userName" placeholder="userName" [required]="registerMode">
+                    <mat-error *ngIf="loginForm.get('userName')?.errors?.required">
+                        UserName is required.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput type="email" formControlName="email" placeholder="Ex. pat@example.com">
+                    <mat-error *ngIf="loginForm.get('email')?.errors?.required">
+                        Email is required.
+                    </mat-error>
+                    <mat-error *ngIf="!loginForm.get('email')?.errors?.required && loginForm.get('email')?.errors?.email">
+                        Please enter a valid email address
+                    </mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Password" formControlName="password" required>
+                    <mat-error *ngIf="!loginForm.get('password')?.errors?.required">
+                        Password length must be between 4 - 8 characters
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched) && loginForm.get('password')?.errors?.required">
+                        Password is required
+                    </mat-error>
+                </mat-form-field>
+
+                <button mat-flat-button color="primary" type="submit" (click)="login(loginForm)" [disabled]="!loginForm.valid">Log In</button>
+            </form>
+        </mat-card-content>
+
+        <mat-error *ngIf="errors">
+            <p>{{errorsMsg}}</p>
+        </mat-error>
+
+    </mat-card>
+</div>
